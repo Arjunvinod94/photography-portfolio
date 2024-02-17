@@ -93,8 +93,18 @@ const verifyEditImage = async(req,res)=>{
 
 const deleteImage = async(req,res)=>{
     try {
-        const result = await Image.findByIdAndDelete({_id: req.query.id})
-        if(result) {
+        const deletedImage = await Image.findByIdAndDelete({_id: req.query.id})
+        if(deletedImage) {
+            const imageFilename = deletedImage.image
+            const imageFolderPath = path.join(__dirname, '../public/img/portfolio')
+
+            const imagePath = path.join(imageFolderPath, imageFilename)
+            if(fs.existsSync(imagePath)) {
+                fs.unlinkSync(imagePath)
+            } else {
+                console.log(`Image file not found : ${imagePath}`);
+            }
+
             res.redirect('/admin/home')
         } else {
             res.status(404).send('Image not found');

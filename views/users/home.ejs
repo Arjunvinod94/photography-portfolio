@@ -55,14 +55,17 @@
 		<ul class="portfolio-filter controls text-center">
 			<li class="control" data-filter="all">All</li>
 			<li class="control" data-filter=".nature">Nature</li>
-			<li class="control" data-filter=".car">Cars</li>
-			<li class="control" data-filter=".bike">Bikes</li>
-			<li class="control" data-filter=".lifestyle">Lifestyle</li>
-			<li class="control" data-filter=".fashion">Fashion</li>
+			<li class="control" data-filter=".macro">Macro</li>
+			<li class="control" data-filter=".events">Events</li>
+			<li class="control" data-filter=".objects">Objects</li>
+			<li class="control" data-filter=".people">People</li>
+			<li class="control" data-filter=".architecture">Architecture</li>
+			
 		</ul>
 		<div class="row portfolio-gallery m-0">
-			<% if(Images.length > 0 ) {%>
-				<% Images.forEach(image=>{ %>
+			<% const reversedImages = Images.slice().reverse() %>
+			<% if(reversedImages.length > 0 ) {%>
+				<% reversedImages.forEach(image=>{ %>
 
 					<div class="mix col-xl-2 col-md-3 col-sm-4 col-6 p-0 <%=image.category %>">
 						<a href="/img/portfolio/<%= image.image %>" class="portfolio-item img-popup set-bg"

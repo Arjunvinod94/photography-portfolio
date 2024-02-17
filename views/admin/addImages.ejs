@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        nav {
+            background-color: #444;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .container {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 50vh;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #444;
+            color: #fff;
+        }
+
+        .add-button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .add-button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .add-image-form {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 400px; /* Adjust the maximum width as needed */
+        }
+
+        .add-image-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .add-image-form input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        .add-image-form button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .add-image-form button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Admin Panel</h1>
+    </header>
+
+    <nav>
+        <a href="/admin/home">Home</a>
+        <a href="/admin/login">Logout</a>
+    </nav>
+
+    <div class="container">
+        <div class="add-image-form">
+            <h2>Add New Image</h2>
+            <form id="addImageForm" action="/admin/add-images" method="post" enctype="multipart/form-data">
+                <label for="Image">Image</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+
+                <label for="Category">Category</label>
+                <input type="text" id="category" name="category" required>
+
+                <button type="submit">Add Image</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('addImageForm').addEventListener('submit', function (event) {
+            var imageInput = document.getElementById('image');
+            var categoryInput = document.getElementById('category');
+    
+            if (!imageInput.value || !categoryInput.value) {
+                alert('Image and Category are required fields.');
+                event.preventDefault(); // Prevent the form from submitting
+            }
+        });
+    </script>
+    
+</body>
+
+</html>

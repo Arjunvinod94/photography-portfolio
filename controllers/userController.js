@@ -1,6 +1,9 @@
+const Image = require('../models/imageModel')
+
 const loadHome = async(req,res)=>{
     try {
-        res.render('home')
+        const Images = await Image.find({})
+        res.render('home',{Images})
     } catch (error) {
         console.log(error.message);
     }

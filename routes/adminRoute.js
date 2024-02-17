@@ -40,4 +40,8 @@ admin_route.get('/home',adminController.loadHome)
 admin_route.get('/add-images',adminController.loadAddImages)
 admin_route.post('/add-images',upload.single('image'),adminController.verifyAddImages)
 
+admin_route.get('/home/edit-image',adminController.loadEditImage)
+admin_route.post('/home/edit-image',adminController.verifyEditImage)
+admin_route.get('/home/delete-image',adminController.deleteImage)
+
 module.exports = admin_route

@@ -69,10 +69,50 @@ const verifyAddImages = async(req,res)=>{
     }
 }
 
+const loadEditImage = async(req,res)=>{
+    try {
+        const imageData = await Image.findById({_id: req.query.id})
+        res.render('editImage',{imageData})
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+const verifyEditImage = async(req,res)=>{
+    try {
+        const result = await Image.findByIdAndUpdate({_id: req.query.id},{$set:{category: req.body.category}})
+        if(result) {
+            res.redirect('/admin/home')
+        } else {
+            res.render('/admin/edit-image',{message: "Unable to edit image"})
+        }
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+const deleteImage = async(req,res)=>{
+    try {
+        const result = await Image.findByIdAndDelete({_id: req.query.id})
+        if(result) {
+            res.redirect('/admin/home')
+        } else {
+            res.status(404).send('Image not found');
+        }
+
+
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
 module.exports = {
     loadLogin,
     verifyLogin,
     loadHome,
     loadAddImages,
     verifyAddImages,
+    loadEditImage,
+    verifyEditImage,
+    deleteImage
 }

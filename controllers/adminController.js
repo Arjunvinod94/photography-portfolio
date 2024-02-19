@@ -22,6 +22,7 @@ const verifyLogin = async(req,res)=>{
         if(adminData) {
             const passwordMatch = await bcrypt.compare(password, adminData.password)
             if(passwordMatch) {
+                req.session.admin_id = adminData._id
                 res.redirect('/admin/home')
             }else{
                 res.render('adminLogin',{message:"Check your email or password"})
@@ -40,6 +41,15 @@ const loadHome = async(req,res)=>{
     try {
         const Images = await Image.find({})
         res.render('adminHome',{Images})
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+const loadLogout = async(req,res)=>{
+    try {
+        req.session.destroy()
+        res.redirect('/admin')
     } catch (error) {
         console.log(error.message);
     }
@@ -120,6 +130,7 @@ module.exports = {
     loadLogin,
     verifyLogin,
     loadHome,
+    loadLogout,
     loadAddImages,
     verifyAddImages,
     loadEditImage,

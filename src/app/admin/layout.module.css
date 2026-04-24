@@ -1,0 +1,62 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-4) var(--space-8);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-secondary);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand {
+  font-weight: 600;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.nav {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.link {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.link:hover {
+  color: var(--text-primary);
+}
+
+.logoutBtn {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.logoutBtn:hover {
+  background: var(--border);
+  color: var(--text-primary);
+}
+
+.main {
+  flex: 1;
+  padding: var(--space-8);
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}

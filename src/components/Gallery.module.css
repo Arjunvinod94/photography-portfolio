@@ -1,0 +1,97 @@
+.galleryContainer {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: var(--space-4);
+}
+
+.masonry {
+  column-count: 1;
+  column-gap: var(--space-4);
+}
+
+@media (min-width: 640px) {
+  .masonry {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .masonry {
+    column-count: 3;
+  }
+}
+
+@media (min-width: 1440px) {
+  .masonry {
+    column-count: 4;
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--space-12);
+  padding-top: var(--space-12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  opacity: 0;
+  animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  margin-bottom: var(--space-4);
+}
+
+.name {
+  font-family: var(--font-serif);
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: var(--text-primary);
+}
+
+.category {
+  font-family: var(--font-sans);
+  font-size: clamp(0.75rem, 1.5vw, 1rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  color: var(--text-muted);
+  margin-left: 0.4em; /* Compensates for trailing letter-spacing to keep text centered */
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  max-width: 600px;
+  margin: 0 auto;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  opacity: 0;
+  animation: slideUpFade 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+}
+
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.emptyState {
+  text-align: center;
+  padding: var(--space-12) 0;
+  color: var(--text-secondary);
+  font-size: 1.25rem;
+}

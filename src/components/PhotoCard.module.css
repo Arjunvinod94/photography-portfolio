@@ -1,0 +1,64 @@
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  cursor: zoom-in;
+  background-color: var(--bg-tertiary);
+  margin-bottom: var(--space-4);
+  break-inside: avoid;
+  transform: translateZ(0);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  transition: transform var(--transition-slow);
+}
+
+.card:hover .imageWrapper {
+  transform: scale(1.03);
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: opacity var(--transition-normal);
+}
+
+.imageLoading {
+  opacity: 0;
+}
+
+.imageLoaded {
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 40%);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  display: flex;
+  align-items: flex-end;
+  padding: var(--space-4);
+  pointer-events: none;
+}
+
+.card:hover .overlay {
+  opacity: 1;
+}
+
+.title {
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transform: translateY(10px);
+  transition: transform var(--transition-normal);
+}
+
+.card:hover .title {
+  transform: translateY(0);
+}

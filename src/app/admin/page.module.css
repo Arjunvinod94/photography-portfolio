@@ -1,0 +1,142 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--space-2);
+}
+
+.uploadForm {
+  background: var(--bg-secondary);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.input {
+  padding: var(--space-3);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: inherit;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--text-secondary);
+}
+
+.fileInput {
+  padding: var(--space-4);
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-md);
+  text-align: center;
+  cursor: pointer;
+  background: var(--bg-tertiary);
+  transition: all var(--transition-fast);
+}
+
+.fileInput:hover {
+  border-color: var(--text-secondary);
+  background: var(--bg-secondary);
+}
+
+.button {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  align-self: flex-start;
+  transition: opacity var(--transition-fast);
+}
+
+.button:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-4);
+}
+
+.photoCard {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 1;
+}
+
+.photoImage {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.photoOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.photoCard:hover .photoOverlay {
+  opacity: 1;
+}
+
+.deleteBtn {
+  background: #ef4444;
+  color: white;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.deleteBtn:hover {
+  background: #dc2626;
+}
+
+.photoInfo {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-2);
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  font-size: 0.75rem;
+  pointer-events: none;
+}

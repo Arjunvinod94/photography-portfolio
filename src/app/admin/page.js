@@ -64,7 +64,7 @@ export default function AdminPage() {
     if (!confirm('Are you sure you want to delete this photo?')) return;
 
     try {
-      const res = await fetch(`/api/photos/${id}`, { method: 'DELETE' });
+      const res = await fetch(`/api/photos?id=${encodeURIComponent(id)}`, { method: 'DELETE' });
       if (res.ok) {
         setPhotos(photos.filter(p => p.id !== id));
       } else {
